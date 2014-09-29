@@ -17,7 +17,7 @@ Understands multiple file types
 WITH SEPARATOR ONLY
 Guesses database structure !!
 Reads in column names
-Saves to database table
+Saves to database table in Postgres format
 
 
 3. USAGE
