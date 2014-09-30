@@ -16,13 +16,15 @@ Reads a flat file
 Understands multiple file types
 WITH SEPARATOR ONLY
 Guesses database structure !!
-Reads in column names
+Reads in column names (from csv file or external)
 Saves to database table in Postgres format
 
 
 3. USAGE
 
-create_fromtxt.pl -csv -db DATABASE -host swarm6 FILENAME.EXT [TABLENAME]
+create_fromtxt.pl -csv -db DATABASE -host host.name.com FILENAME.EXT [TABLENAME]
+
+
 
 4. MORE USAGE
 
