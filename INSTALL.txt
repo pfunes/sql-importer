@@ -1,0 +1,45 @@
+Perl libraries required: 
+
+Text::CSV	http://search.cpan.org/~makamaka/Text-CSV-1.32/lib/Text/CSV.pm
+Text::CSV_XS	http://search.cpan.org/~hmbrand/Text-CSV_XS-1.11/CSV_XS.pm
+Pg		http://search.cpan.org/~mergl/pgsql_perl5-1.9.0/Pg.pm
+
+
+Installation:
+
+Ubuntu/Linux 
+
+	Use packages libpg-perl, libtext-csv-perl & libtext-csv-xs-perl
+
+All others
+
+	# perl -MCPAN -e shell
+
+	> install Text::CSV
+
+	> install Text::CSV_XS
+
+	> install Pg
+
+	This step usually fails, because of the PostgreSQL requirements, so follow with:
+
+	> look Pg
+
+	You need to find where you Postgres install has its libpq.so (lib) and libpq-fe.h files (include)
+
+	# export POSTGRES_INCLUDE=/path/to/postgres-include-folder
+	# export POSTGRES_LIB=/path/to/postgres-lib-folder
+
+	For example with my copy of Mac Postgres.app, it is: 
+
+	# export POSTGRES_INCLUDE=/Applications/Postgres.app//Contents/Versions/9.3/include
+	# export POSTGRES_LIB=/Applications/Postgres.app/Contents/Versions/9.3/lib
+
+	# perl Makefile.PL
+	# make
+	# make install
+	# exit
+	
+	> ^D
+
+
