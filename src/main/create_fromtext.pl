@@ -13,7 +13,7 @@ use Pg; 				# Postgres database module
 
 my $status=do("struct_lib.pl");	# load my own set of postgres-related libraries
 
-die "Failed to load struct_lib.pl, must reside in same directory as $0. Stopped"
+die "Failed to load struct_lib.pl, must reside in same directory as $0. Stopped.\n Error messages: \n(1) $@\n(2) $!"
   unless (defined($status));
 
 exit(-1) unless ($status);		# error initializing struct_lib package
