@@ -188,7 +188,7 @@ usage() unless (defined($file));
 
 if (!($nosql)) {
   $status=do("sqllib.pl");
-  die "$0: Failed to load sqllib.pl. Sqllib.pl must reside in the same directory as $0.\nStopped"
+  die "$0: Failed to load sqllib.pl. Sqllib.pl must reside in the same directory as $0.\n\n Error messages: \n(1) $@\n(2) $!\nStopped."
     unless (defined($status));
   die "$0: Database not open. Stopped"
     unless ($status);
