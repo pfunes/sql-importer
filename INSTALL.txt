@@ -1,8 +1,14 @@
 Perl libraries required: 
 
-Text::CSV	http://search.cpan.org/~makamaka/Text-CSV-1.32/lib/Text/CSV.pm
-Text::CSV_XS	http://search.cpan.org/~hmbrand/Text-CSV_XS-1.11/CSV_XS.pm
-Pg		http://search.cpan.org/~mergl/pgsql_perl5-1.9.0/Pg.pm
+	Text::CSV	http://search.cpan.org/~makamaka/Text-CSV-1.32/lib/Text/CSV.pm
+	Text::CSV_XS	http://search.cpan.org/~hmbrand/Text-CSV_XS-1.11/CSV_XS.pm
+	Pg		http://search.cpan.org/~mergl/pgsql_perl5-1.9.0/Pg.pm
+
+
+Warning:
+
+	Pg (required) and DBD::Pg (not used) are not the same package! If you convert this script to use DBD::Pg instead of Pg, please 
+	let me know, as I think DBD::Pg must be the newer/better package. 
 
 
 Installation:
