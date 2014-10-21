@@ -282,7 +282,7 @@ unless (defined($tfile)) {
   }
 }
 
-my @fieldnames; 
+my @fieldnames=(); 
 if ((not $nosql) and ($numfields<0)) {
   @fieldnames=getfields($tablename);
   if ($lineno) { pop(@fieldnames); }
@@ -302,7 +302,7 @@ my $schemaname;
 if (defined($schema)) { $schemaname="$schema.$tablename"; }
 else {$schemaname = $tablename;}
 my $fieldlist;
-if (defined(@fieldnames)) {
+if (@fieldnames > 0) {
 	$fieldlist = "(" . join(',',@fieldnames) . ")";
 }
 else {

@@ -31,7 +31,7 @@ sub struct_guesser {
     }
   }
   my @xnames;
-  my @names;
+  my @names=();
   my $csv;
   for my $headline (@firstline) {
     chomp $headline;
@@ -46,7 +46,7 @@ sub struct_guesser {
     else {
       @xnames=split /$nameseparator/,$headline;
     }
-    if (not defined(@names)) { @names = @xnames; }
+    if (@names == 0)  { @names = @xnames; }
     else {
     	for(my $i=0; $i<@names and $i<@xnames; $i++) {
 		$names[$i] = $names[$i].' '.$xnames[$i];
