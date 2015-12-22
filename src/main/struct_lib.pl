@@ -12,11 +12,14 @@ sub struct_guesser {
   my $trows=$_[6]; # column names span multiple rows (concatenate)
   my $maxcount=$_[7]; # if defined, stop parsing after $maxcount lines
   my $space=$_[8]; # trim spaces
+  my $encoding=$_[9]; #encoding
   
   unless(defined($usetext)) { $usetext=0; }
   unless(defined($trows)) { $trows=1; }
 
-  open I,"<$file" or die "can't open $file";
+  print STDERR "Encoding $encoding\n";
+
+  open I,"<:encoding($encoding)","$file" or die "can't open $file";
   my @firstline;
   if (defined($tfile)) {
     open T,"<$tfile" or die "can't open $tfile";

@@ -61,6 +61,7 @@ The ascii input file must be in either delimited format, or CSV format
     -infermax     Infer structure from only these many lines instead of the whole data file. 
     -dmy          Use european order for date fields (does not work yet.)
     -varchar      Use varchar(maxlen) for strings instead of text\n
+    -e encoding   Encoding, see http://perldoc.perl.org/perlopentut.html. Defaults to UTF-8. Others could be ASCII, ISO-8859-1, ISO-8859-15, Windows-1252, MacRoman, and even UTF-16LE
 ";
   exit(-1);
 }
@@ -79,7 +80,7 @@ my $noblanks=0;			  # See -b
 my $lineno=0;                # See -num
 my $usetext=1;               # See -varchar
 my $trows=1;
-
+my $encoding="UTF-8";
 my $verbose=0;
 
 my $create=1;
@@ -142,6 +143,9 @@ while ($_=shift(@ARGV)) {
     elsif (/-nf$/) {
     	$numfields=shift(@ARGV);
 	}
+    elsif (/-e$/) {
+      $encoding=shift(@ARGV);
+    }
     elsif (/-s$/) {
       $separator=shift(@ARGV);
       $nameseparator=$separator;
@@ -237,7 +241,7 @@ if ($create) {
   }
   else {
 	  print STDERR "Guessing structure...\n";
-	  my $struct=struct_guesser($verbose,$separator,$nameseparator,$file,$tfile,$usetext,$trows,$infermax,$space);
+	  my $struct=struct_guesser($verbose,$separator,$nameseparator,$file,$tfile,$usetext,$trows,$infermax,$space,$encoding);
 	  chomp $struct; # drop trailing newline
 	  $struct =~ s/[ \t]*$//; # drop trailing blanks
 	
@@ -274,7 +278,9 @@ if ($create) {
 
 unless (defined($file)) { usage(); }
 
-open I,"<$file" or die "can't open $file";
+print STDERR "Encoding: $encoding\n";
+ 
+open I,"<: encoding($encoding)","$file" or die "can't open $file";
 # skip title rows
 unless (defined($tfile)) {
   for (my $i=0;$i<$trows;$i++) {
