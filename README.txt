@@ -36,9 +36,17 @@ vim create_fromtxt.pl
 
 6. INSTALLATION
 
-a. Install Postgres
-b. $ apt-get install libpg-perl OR  $ cpan Pg 
-c. /path/to/sql-importer/src/main/create_fromtxt.pl [...]
+a. Download this project
+b. Install Postgres
+c. Install Perl libraries: 
 
-d. Read INSTALL.txt for more details.
+Text::CSV      apt-get install libtext-csv-perl  
+Text::CSV_XS   apt-get install libtext-csv-xs-perl 
+Pg             apt-get install libpg-perl
+
+Read INSTALL.txt for more details.
+
+7. RUN FROM THE COMMAND LINE
+
+$ /path/to/sql-importer/src/main/create_fromtxt.pl [...]
 
